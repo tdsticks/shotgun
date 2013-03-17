@@ -1,12 +1,12 @@
-import os
+import os, sys
 from shotgun_api3 import Shotgun
 
 # ----------------------------------------------
 # USES API SCRIPT AND ESTABLISHED SG WITH PYTHON
 # ---------------------------------------------- 
-SERVER_PATH 				= 'shotgun url'
-SCRIPT_USER 				= 'script name'
-SCRIPT_KEY 					= 'your api key'
+SERVER_PATH 				= 'ShotgunUrl'
+SCRIPT_USER 				= 'ScriptName '
+SCRIPT_KEY 					= 'ApiKey'
 sg 							= Shotgun(SERVER_PATH, SCRIPT_USER, SCRIPT_KEY)
 #print sg
 
@@ -50,16 +50,16 @@ makeDir(root)
 os.chdir(root)
 
 
-
-
 # Start Shotgun calls
-fields 						= ['id', 'code', 'name']
-filters						=[
+fields 						= ['id', 'code', 'name', 'sg_status']
+filters						= [
 								['sg_status', 'is', 'Active'],
-]
+								['id', 'is_not', 4]
+							]
 projects 					= sg.find("Project",filters,fields)
 print projects
 print
+
 
 for p in projects:
 	print p
