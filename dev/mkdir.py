@@ -1,9 +1,9 @@
 import os #print os
 
-shotFolders 					= ['dev', 'ren', 'plt'] 
+shotFolders 					= ['dev', 'ren', 'plt']
 #print shotFolders
 
-renFolders 						= ['ver1', 'ver2', 'dev'] 
+renFolders 						= ['ver1', 'ver2', 'dev']
 #print renFolders
 
 
@@ -13,22 +13,22 @@ osType = os.name
 
 # Conditioanl to Detect what OS we're using
 if osType == 'nt':
-    root 						= 'C:/projects/shotgun/seq'
+    root 						= 'C:/SG/seq'
 
     # Notes for what OS we're using
-    os_ver 						= "OS Ver: Windows"            
+    os_ver 						= "OS Ver: Windows"
 
 elif osType == 'posix':
-    root 						= "/Users/steves/Documents/workspace/shotgun/dev/seq"
+    root 						= "/SG/dev/seq"
 
     # Notes for what OS we're using
-    os_ver 						= "OS Ver: OSX/Linux"      
+    os_ver 						= "OS Ver: OSX/Linux"
 
 else:
 	print "I don't know what OS this is..."
 
 
-# Only make dir if it doesn't already exist 
+# Only make dir if it doesn't already exist
 if not os.path.isdir(root):
 	os.mkdir(root)
 
@@ -46,13 +46,13 @@ for i in range(2):
 	# Build padded shot name
 	# Nice work in finding this!!!
 	shotName 					= "s%03d" % i #print shotName
- 
+
  	# Create string message for raw_input function
 	shotInputMsg 				= "Please enter desc for shot# " + str(shotName) + " :"
 	#shotInputMsg 				= "Please enter desc for shot# %s :" % (shotName) # Or you could try this way
-	
+
 	# Run raw_input asking for user prompt
-	shotDesc 					= raw_input(shotInputMsg)	
+	shotDesc 					= raw_input(shotInputMsg)
 
 	# reassing shotname with the users input
 	shotName 					= shotName + "_" + shotDesc
@@ -67,7 +67,7 @@ for i in range(2):
 	if not os.path.isdir(shotPath):
 		os.mkdir(shotPath)
 
-	# Now loop through the folders to be created under each shot 
+	# Now loop through the folders to be created under each shot
 	# We can also nest more for loops for creating sub folders
 	for shotFldr in shotFolders:
 		print "	",shotFldr
@@ -87,10 +87,10 @@ for i in range(2):
 			# Loop through ren folders
 			for renFldr in renFolders:
 				print "		",renFldr
-				
+
 				# build ren path from parent shot path
 				renFolderPath 			= shotFolderPath + "/" + renFldr
-				
+
 				if not os.path.isdir(renFolderPath):
 					os.mkdir(renFolderPath)
 

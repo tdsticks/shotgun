@@ -3,10 +3,10 @@ from shotgun_api3 import Shotgun
 
 # ----------------------------------------------
 # USES API SCRIPT AND ESTABLISHED SG WITH PYTHON
-# ---------------------------------------------- 
-SERVER_PATH 				= 'ShotgunUrl'
-SCRIPT_USER 				= 'ScriptName '
-SCRIPT_KEY 					= 'ApiKey'
+# ----------------------------------------------
+SERVER_PATH 				= 'enter your sg url here'
+SCRIPT_USER 				= 'enter your script user'
+SCRIPT_KEY 					= 'enter your script key'
 sg 							= Shotgun(SERVER_PATH, SCRIPT_USER, SCRIPT_KEY)
 #print sg
 
@@ -16,7 +16,7 @@ sg 							= Shotgun(SERVER_PATH, SCRIPT_USER, SCRIPT_KEY)
 # with some error checking
 def makeDir(folderName):
 	if not os.path.isdir(folderName):
-		os.mkdir(folderName) 
+		os.mkdir(folderName)
 		print "Folder:", folderName, "Created"
 		print
 
@@ -27,16 +27,16 @@ osType = os.name
 
 # Conditioanl to Detect what OS we're using
 if osType == 'nt':
-    root 						= 'C:/projects/shotgun/jobs'
+    root 						= 'C:/SG/dev/'
 
     # Notes for what OS we're using
-    os_ver 						= "OS Ver: Windows"            
+    os_ver 						= "OS Ver: Windows"
 
 elif osType == 'posix':
-    root 						= "/Users/steves/Documents/workspace/shotgun/dev/jobs"
+    root 						= "/SG/dev/"
 
     # Notes for what OS we're using
-    os_ver 						= "OS Ver: OSX/Linux"      
+    os_ver 						= "OS Ver: OSX/Linux"
 
 else:
 	print "I don't know what OS this is..."
@@ -54,7 +54,7 @@ os.chdir(root)
 fields 						= ['id', 'code', 'name', 'sg_status']
 filters						= [
 								['sg_status', 'is', 'Active'],
-								['id', 'is_not', 4]
+								#['id', 'is_not', 4] # Add project ids to ignore
 							]
 projects 					= sg.find("Project",filters,fields)
 print projects
@@ -73,7 +73,7 @@ for p in projects:
 								['project', 'is', {'type':'Project', 'id':p['id']}]
 	]
 	fields					= ['code','shots']
-	Sequences 				= sg.find('Sequence', filters, fields) 
+	Sequences 				= sg.find('Sequence', filters, fields)
 	#print Sequences
 	#print
 
