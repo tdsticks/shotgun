@@ -1,7 +1,7 @@
 shotgun.py
 =======
 
-This is a simple Sg script that runs through all of your projects in Sg which then generates folders per each project, sequence and shot.  If you're unfamilar with Sg's API, this would be a good little scripts to start with.
+This is a simple Sg script that runs through all of your projects in Sg which then generates folders per each project, sequence and shot.  If you're unfamilar with Sg's API, this would be a good little script to start with.
 
 You can specify in the filters which project ids you want to ignore from creation.
 
